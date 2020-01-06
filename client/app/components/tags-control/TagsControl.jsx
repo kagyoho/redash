@@ -63,7 +63,7 @@ function modelTagsControl({ archivedTooltip }) {
         )}
         {isArchived && (
           <Tooltip placement="right" title={archivedTooltip}>
-            <span className="label label-tag-archived">已归档</span>
+            <span className="label label-tag-archived">已回收</span>
           </Tooltip>
         )}
       </TagsControl>
@@ -85,11 +85,11 @@ function modelTagsControl({ archivedTooltip }) {
 }
 
 export const QueryTagsControl = modelTagsControl({
-  archivedTooltip: '该指标已归档，可以在模型中使用，也可以显示在搜索结果中。',
+  archivedTooltip: '该指标已回收，可以在模型中使用，也可以显示在搜索结果中。',
 });
 
 export const DashboardTagsControl = modelTagsControl({
-  archivedTooltip: '该模型已归档，并不会在模型中也不搜索结果中列出。',
+  archivedTooltip: '该模型已回收，并不会在模型中也不搜索结果中列出。',
 });
 
 export default function init(ngModule) {

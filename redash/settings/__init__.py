@@ -9,24 +9,41 @@ from flask_talisman import talisman
 from .helpers import fix_assets_path, array_from_string, parse_boolean, int_or_none, set_from_string
 from .organization import DATE_FORMAT, TIME_FORMAT  # noqa
 
+# ==========Redis配置==========start
+# Redis访问地址
 REDIS_URL = os.environ.get('REDASH_REDIS_URL', os.environ.get('REDIS_URL', "redis://127.0.0.1:6379/0"))
+# 代理服务器数
 PROXIES_COUNT = int(os.environ.get('REDASH_PROXIES_COUNT', "1"))
+# ==========Redis配置==========end
 
+# ==========StatsD配置==========start
+# StatsD的地址
 STATSD_HOST = os.environ.get('REDASH_STATSD_HOST', "127.0.0.1")
+# StatsD端口号
 STATSD_PORT = int(os.environ.get('REDASH_STATSD_PORT', "8125"))
+# StatsD前缀
 STATSD_PREFIX = os.environ.get('REDASH_STATSD_PREFIX', "redash")
+# 是否将标记与StatsD指标一起使用
 STATSD_USE_TAGS = parse_boolean(os.environ.get('REDASH_STATSD_USE_TAGS', "false"))
+# ==========StatsD配置==========end
 
-# Connection settings for Redash's own database (where we store the queries, results, etc)
+# ==========数据库配置==========start
+# 用于连接数据的数据库
 # SQLALCHEMY_DATABASE_URI = os.environ.get("REDASH_DATABASE_URL", os.environ.get('DATABASE_URL', "postgresql:///postgres"))
 SQLALCHEMY_DATABASE_URI = os.environ.get("REDASH_DATABASE_URL", os.environ.get('DATABASE_URL', "postgresql://postgres:Beidas0ft@localhost:5432/postgres"))
+# 控制在连接池达到最大值后可以创建的连接数。当这些额外的 连接回收到连接池后将会被断开和抛弃。
 SQLALCHEMY_MAX_OVERFLOW = int_or_none(os.environ.get("SQLALCHEMY_MAX_OVERFLOW"))
+# 数据库连接池的大小。默认是数据库引擎的默认值 （通常是 5）。
 SQLALCHEMY_POOL_SIZE = int_or_none(os.environ.get("SQLALCHEMY_POOL_SIZE"))
 SQLALCHEMY_DISABLE_POOL = parse_boolean(os.environ.get("SQLALCHEMY_DISABLE_POOL", "false"))
+# 如果设置成 True (默认情况)，Flask-SQLAlchemy 将会追踪对象的修改并且发送信号。这需要额外的内存， 如果不必要的可以禁用它。
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+# 如果设置成 True，SQLAlchemy 将会记录所有 发到标准输出(stderr)的语句，这对调试很有帮助。
 SQLALCHEMY_ECHO = False
+# ==========数据库配置==========end
 
-# Celery related settings
+# ==========Celery配置==========start
+# Celery的Broker，默认值是REDIS_URL的值
 CELERY_BROKER = os.environ.get("REDASH_CELERY_BROKER", REDIS_URL)
 CELERY_RESULT_BACKEND = os.environ.get("REDASH_CELERY_RESULT_BACKEND", os.environ.get("REDASH_CELERY_BACKEND", CELERY_BROKER))
 CELERY_RESULT_EXPIRES = int(os.environ.get("REDASH_CELERY_RESULT_EXPIRES", os.environ.get("REDASH_CELERY_TASK_RESULT_EXPIRES", 3600 * 4)))
@@ -43,50 +60,54 @@ CELERY_WORKER_PREFETCH_MULTIPLIER = int(os.environ.get("REDASH_CELERY_WORKER_PRE
 CELERY_ACCEPT_CONTENT = os.environ.get("REDASH_CELERY_ACCEPT_CONTENT", "json").split(",")
 CELERY_TASK_SERIALIZER = os.environ.get("REDASH_CELERY_TASK_SERIALIZER", "json")
 CELERY_RESULT_SERIALIZER = os.environ.get("REDASH_CELERY_RESULT_SERIALIZER", "json")
+# ==========Celery配置==========end
 
-# The following enables periodic job (every 5 minutes) of removing unused query results.
+# 通过以下操作，可以定期（每5分钟）删除未使用的查询结果。
+# 删除超过QUERY_RESULTS_CLEANUP_MAX_AGE设置天数的查询
 QUERY_RESULTS_CLEANUP_ENABLED = parse_boolean(os.environ.get("REDASH_QUERY_RESULTS_CLEANUP_ENABLED", "true"))
+# 删除超过QUERY_RESULTS_CLEANUP_MAX_AGE设置天数的查询时的最大删除次数
 QUERY_RESULTS_CLEANUP_COUNT = int(os.environ.get("REDASH_QUERY_RESULTS_CLEANUP_COUNT", "100"))
+# 删除超过指定值的查询结果，默认值：（ 7单位：天）
 QUERY_RESULTS_CLEANUP_MAX_AGE = int(os.environ.get("REDASH_QUERY_RESULTS_CLEANUP_MAX_AGE", "7"))
 
+# 数据源模式检索间隔
 SCHEMAS_REFRESH_SCHEDULE = int(os.environ.get("REDASH_SCHEMAS_REFRESH_SCHEDULE", 30))
 SCHEMAS_REFRESH_QUEUE = os.environ.get("REDASH_SCHEMAS_REFRESH_QUEUE", "celery")
 
+#  API的认证方法api_key，hmac，password的一个
 AUTH_TYPE = os.environ.get("REDASH_AUTH_TYPE", "api_key")
+# 新用户邀请令牌的到期时间
 INVITATION_TOKEN_MAX_AGE = int(os.environ.get("REDASH_INVITATION_TOKEN_MAX_AGE", 60 * 60 * 24 * 7))
 
-# The secret key to use in the Flask app for various cryptographic features
+# 在Flask应用中用于各种加密功能的秘密密钥
 SECRET_KEY = os.environ.get("REDASH_COOKIE_SECRET", "c292a0a3aa32397cdb050e233733900f")
-# The secret key to use when encrypting data source options
+# 加密数据源选项时使用的密钥
 DATASOURCE_SECRET_KEY = os.environ.get('REDASH_SECRET_KEY', SECRET_KEY)
 
-# Whether and how to redirect non-HTTP requests to HTTPS. Disabled by default.
+# 是否将非HTTP请求重定向到HTTPS。 默认禁用。
 ENFORCE_HTTPS = parse_boolean(os.environ.get("REDASH_ENFORCE_HTTPS", "false"))
 ENFORCE_HTTPS_PERMANENT = parse_boolean(os.environ.get("REDASH_ENFORCE_HTTPS_PERMANENT", "false"))
-# Whether file downloads are enforced or not.
+# 是否强制执行文件下载
 ENFORCE_FILE_SAVE = parse_boolean(os.environ.get("REDASH_ENFORCE_FILE_SAVE", "true"))
 
-# Whether to use secure cookies by default.
+# 默认情况下是否使用安全cookie。
 COOKIES_SECURE = parse_boolean(os.environ.get("REDASH_COOKIES_SECURE", str(ENFORCE_HTTPS)))
-# Whether the session cookie is set to secure.
+# 会话cookie是否设置为安全。
 SESSION_COOKIE_SECURE = parse_boolean(os.environ.get("REDASH_SESSION_COOKIE_SECURE") or str(COOKIES_SECURE))
-# Whether the session cookie is set HttpOnly.
+# 会话cookie是否设置为HttpOnly
 SESSION_COOKIE_HTTPONLY = parse_boolean(os.environ.get("REDASH_SESSION_COOKIE_HTTPONLY", "true"))
-# Whether the session cookie is set to secure.
+# 会话cookie是否设置为安全。
 REMEMBER_COOKIE_SECURE = parse_boolean(os.environ.get("REDASH_REMEMBER_COOKIE_SECURE") or str(COOKIES_SECURE))
-# Whether the remember cookie is set HttpOnly.
+# 是否记住cookie设置为HttpOnly
 REMEMBER_COOKIE_HTTPONLY = parse_boolean(os.environ.get("REDASH_REMEMBER_COOKIE_HTTPONLY", "true"))
 
-# Doesn't set X-Frame-Options by default since it's highly dependent
-# on the specific deployment.
-# See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
-# for more information.
+# 默认情况下不设置X-Frame-Options，因为它高度依赖于特定的部署。
+# 参考 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
 FRAME_OPTIONS = os.environ.get("REDASH_FRAME_OPTIONS", "deny")
 FRAME_OPTIONS_ALLOW_FROM = os.environ.get("REDASH_FRAME_OPTIONS_ALLOW_FROM", "")
 
-# Whether and how to send Strict-Transport-Security response headers.
+# 是否以及如何发送Strict-Transport-Security响应标头。
 # See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
-# for more information.
 HSTS_ENABLED = parse_boolean(os.environ.get("REDASH_HSTS_ENABLED") or str(ENFORCE_HTTPS))
 HSTS_PRELOAD = parse_boolean(os.environ.get("REDASH_HSTS_PRELOAD", "false"))
 HSTS_MAX_AGE = int(os.environ.get("REDASH_HSTS_MAX_AGE", talisman.ONE_YEAR_IN_SECS))
@@ -175,6 +196,7 @@ LDAP_SEARCH_DN = os.environ.get('REDASH_LDAP_SEARCH_DN', os.environ.get('REDASH_
 
 STATIC_ASSETS_PATH = fix_assets_path(os.environ.get("REDASH_STATIC_ASSETS_PATH", "../client/dist/"))
 
+# 最长的工作时间
 JOB_EXPIRY_TIME = int(os.environ.get("REDASH_JOB_EXPIRY_TIME", 3600 * 12))
 
 LOG_LEVEL = os.environ.get("REDASH_LOG_LEVEL", "INFO")
@@ -333,7 +355,7 @@ BIGQUERY_HTTP_TIMEOUT = int(os.environ.get("REDASH_BIGQUERY_HTTP_TIMEOUT", "600"
 # See https://discuss.redash.io/t/support-for-parameters-in-embedded-visualizations/3337 for more details.
 ALLOW_PARAMETERS_IN_EMBEDS = parse_boolean(os.environ.get("REDASH_ALLOW_PARAMETERS_IN_EMBEDS", "false"))
 
-# Enhance schema fetching
+# 增强架构获取
 SCHEMA_RUN_TABLE_SIZE_CALCULATIONS = parse_boolean(os.environ.get("REDASH_SCHEMA_RUN_TABLE_SIZE_CALCULATIONS", "false"))
 
 # kylin

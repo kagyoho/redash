@@ -56,7 +56,7 @@
                 </li>
                 <li class="divider" ng-if="query.is_archived"></li>
                 <li ng-if="!query.is_archived && query.id != undefined && (isQueryOwner || currentUser.hasPermission('admin'))">
-                  <a ng-click="archiveQuery()"><i class="fa fa-bookmark-o"></i>归档</a>
+                  <a ng-click="archiveQuery()"><i class="fa fa-bookmark-o"></i>回收</a>
                 </li>
                 <li ng-if="!query.is_archived && query.id != undefined && (isQueryOwner || currentUser.hasPermission('admin')) && showPermissionsControl">
                   <a ng-click="showManagePermissionsModal()">权限管理</a>

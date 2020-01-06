@@ -342,15 +342,15 @@ function QueryViewCtrl(
           $scope.query.schedule = null;
         },
         () => {
-          notification.error('指标无法归档。');
+          notification.error('指标无法回收。');
         },
       );
     }
 
-    const title = '指标归档';
+    const title = '指标回收';
     const message =
-      '您确定要存档此查询吗？<br/>使用其可视化文件创建的所有监控和模型小部件都将被删除。';
-    const confirm = { class: 'btn-warning', title: '归档' };
+      '您确定要回收此查询吗？<br/>使用其可视化文件创建的所有监控和模型小部件都将被删除。';
+    const confirm = { class: 'btn-warning', title: '回收' };
 
     AlertDialog.open(title, message, confirm).then(archive);
   };

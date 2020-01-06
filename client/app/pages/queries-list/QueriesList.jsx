@@ -44,8 +44,8 @@ class QueriesList extends React.Component {
     {
       key: 'archive',
       href: 'queries/archive',
-      title: '归档指标',
-      icon: () => <Sidebar.MenuIcon icon="fa fa-archive" />,
+      title: '回收指标',
+      icon: () => <Sidebar.MenuIcon icon="fa fa-recycle" />,
     },
     {
       key: 'my',
@@ -173,7 +173,7 @@ export default function init(ngModule) {
     },
     {
       path: '/queries/archive',
-      title: '归档指标',
+      title: '回收指标',
       key: 'archive',
     },
     {

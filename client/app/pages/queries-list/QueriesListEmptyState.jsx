@@ -20,7 +20,7 @@ export default function QueriesListEmptyState({ page, searchTerm, selectedTags }
       <BigMessage message="将指标标记为收藏以在此处列出。" icon="fa-star" />
     );
     case 'archive': return (
-      <BigMessage message="归档的查询将在此处列出。" icon="fa-archive" />
+      <BigMessage message="回收的查询将在此处列出。" icon="fa-archive" />
     );
     case 'my': return (
       <div className="tiled bg-white p-15">

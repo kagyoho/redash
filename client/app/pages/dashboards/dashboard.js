@@ -235,9 +235,9 @@ function DashboardCtrl(
       });
     };
 
-    const title = '归档模型';
-    const message = `您确定要归档 "${this.dashboard.name}" 模型`;
-    const confirm = { class: 'btn-warning', title: '归档' };
+    const title = '回收模型';
+    const message = `您确定要回收 "${this.dashboard.name}" 模型`;
+    const confirm = { class: 'btn-warning', title: '回收' };
 
     AlertDialog.open(title, message, confirm).then(archive);
   };

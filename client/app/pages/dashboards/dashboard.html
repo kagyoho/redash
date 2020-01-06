@@ -80,7 +80,7 @@
           <li ng-if="!$ctrl.dashboard.is_archived" ng-class="{hidden: $ctrl.isGridDisabled}"><a ng-click="$ctrl.editLayout(true)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>编辑</a></li>
           <li ng-if="$ctrl.showPermissionsControl"><a ng-click="$ctrl.showManagePermissionsModal()">权限管理</a></li>
           <li ng-if="!$ctrl.dashboard.is_draft"><a ng-click="$ctrl.togglePublished()">取消发布</a></li>
-          <li ng-if="!$ctrl.dashboard.is_archived"><a ng-click="$ctrl.archiveDashboard()"><i class="fa fa-bookmark-o" aria-hidden="true"></i>归档</a></li>
+          <li ng-if="!$ctrl.dashboard.is_archived"><a ng-click="$ctrl.archiveDashboard()"><i class="fa fa-bookmark-o" aria-hidden="true"></i>回收</a></li>
         </ul>
       </div>
     </div>
