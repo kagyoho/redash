@@ -22,7 +22,7 @@ export class SchedulePhrase extends React.Component {
   get content() {
     const { interval: seconds } = this.props.schedule || SchedulePhrase.defaultProps.schedule;
     if (!seconds) {
-      return ['Never'];
+      return ['从不'];
     }
     const humanized = durationHumanize(seconds, {
       omitSingleValueNumber: true,

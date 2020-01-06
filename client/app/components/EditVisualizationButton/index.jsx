@@ -14,7 +14,7 @@ export function EditVisualizationButton(props) {
     >
       <Icon type="form" />
       <span className="hidden-xs hidden-s hidden-m">
-        编辑可视化
+        编辑图表
       </span>
     </Button>
   );
