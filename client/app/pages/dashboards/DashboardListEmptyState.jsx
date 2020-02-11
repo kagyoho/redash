@@ -17,7 +17,7 @@ export default function DashboardListEmptyState({ page, searchTerm, selectedTags
   }
   switch (page) {
     case 'favorites': return (
-      <BigMessage message="收藏的模型，将在此处一一列出。" icon="fa-star" />
+      <BigMessage message="收藏的看板，将在此处一一列出。" icon="fa-star" />
     );
     default: return (
       <EmptyState

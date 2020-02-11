@@ -59,7 +59,7 @@ const PermissionsEditorComponent = {
         loadGrantees();
       }).catch((error) => {
         if (error.status === 403) {
-          notification.error('您无法将用户添加到该模型。', '要求模型所有者授权。');
+          notification.error('您无法将用户添加到该看板。', '要求看板所有者授权。');
         } else {
           notification.error('操作错误');
         }

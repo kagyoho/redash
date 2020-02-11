@@ -15,7 +15,7 @@ export function QueryControlDropdown(props) {
       {!props.query.isNew() && (!props.query.is_draft || !props.query.is_archived) && (
         <Menu.Item>
           <a target="_self" onClick={() => props.openAddToDashboardForm(props.selectedTab)}>
-            <Icon type="plus-circle" theme="filled" />添加到模型
+            <Icon type="plus-circle" theme="filled" />添加到看板
           </a>
         </Menu.Item>
       )}

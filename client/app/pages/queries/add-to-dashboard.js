@@ -16,7 +16,7 @@ const AddToDashboardForm = {
         .then(dashboard => dashboard.addWidget(this.vis))
         .then(() => {
           this.close();
-          notification.success('小部件已添加到模型。');
+          notification.success('小部件已添加到看板。');
         })
         .catch(() => {
           notification.error('小部件未参加。');

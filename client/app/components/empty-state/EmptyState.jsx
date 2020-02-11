@@ -123,7 +123,7 @@ export function EmptyState({
             completed={isCompleted.dashboard}
             onClick={() => CreateDashboardDialog.showModal()}
             urlText="添加"
-            text="您的一个模型"
+            text="您的一个看板"
           />
           <Step
             show={isAvailable.inviteUsers}

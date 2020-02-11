@@ -235,8 +235,8 @@ function DashboardCtrl(
       });
     };
 
-    const title = '回收模型';
-    const message = `您确定要回收 "${this.dashboard.name}" 模型`;
+    const title = '回收看板';
+    const message = `您确定要回收 "${this.dashboard.name}" 看板`;
     const confirm = { class: 'btn-warning', title: '回收' };
 
     AlertDialog.open(title, message, confirm).then(archive);
@@ -298,10 +298,10 @@ function DashboardCtrl(
       },
       (error) => {
         if (error.status === 403) {
-          notification.error('模型更新失败。', '权限被拒绝。');
+          notification.error('看板更新失败。', '权限被拒绝。');
         } else if (error.status === 409) {
           notification.error(
-            '该模型已被其他用户修改。',
+            '该看板已被其他用户修改。',
             '请复制/备份您的更改，然后刷新页面。',
             { duration: null },
           );

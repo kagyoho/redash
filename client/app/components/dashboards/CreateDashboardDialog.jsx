@@ -49,7 +49,7 @@ function CreateDashboardDialog({ dialog }) {
     <Modal
       {...dialog.props}
       {...(isCreateDashboardEnabled ? {} : { footer: null })}
-      title="添加模型"
+      title="添加看板"
       okText="保存"
       cancelText="取消"
       okButtonProps={{
@@ -73,7 +73,7 @@ function CreateDashboardDialog({ dialog }) {
           defaultValue={name}
           onChange={handleNameChange}
           onPressEnter={save}
-          placeholder="模型名称"
+          placeholder="看板名称"
           disabled={saveInProgress}
         />
       </DynamicComponent>

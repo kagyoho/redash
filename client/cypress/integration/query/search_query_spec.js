@@ -9,7 +9,7 @@ describe('Search Query', () => {
     });
 
     cy.request('POST', 'api/queries', {
-      name: '模型数量',
+      name: '看板数量',
       data_source_id: 1,
       query: 'SELECT 1',
     });

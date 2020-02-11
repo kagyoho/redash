@@ -26,7 +26,7 @@
             </li>
 
             <li ng-if="$ctrl.dashboard.canEdit()" class="divider"></li>
-            <li ng-if="$ctrl.dashboard.canEdit()"><a ng-click="$ctrl.deleteWidget()">从模型中删除</a></li>
+            <li ng-if="$ctrl.dashboard.canEdit()"><a ng-click="$ctrl.deleteWidget()">从看板中删除</a></li>
           </ul>
         </div>
         <div class="refresh-indicator" ng-if="$ctrl.widget.loading">
@@ -114,7 +114,7 @@
 
         <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu style="z-index:1000000">
           <li><a ng-show="$ctrl.dashboard.canEdit()" ng-click="$ctrl.editTextBox()">编辑</a></li>
-          <li><a ng-show="$ctrl.dashboard.canEdit()" ng-click="$ctrl.deleteWidget()">从模型中删除</a></li>
+          <li><a ng-show="$ctrl.dashboard.canEdit()" ng-click="$ctrl.deleteWidget()">从看板中删除</a></li>
         </ul>
       </div>
     </div>

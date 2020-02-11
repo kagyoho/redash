@@ -74,7 +74,7 @@ class TextboxDialog extends React.Component {
           loading: this.state.saveInProgress,
           disabled: !this.state.text,
         }}
-        okText={isNew ? '添加到模型' : '保存'}
+        okText={isNew ? '添加到看板' : '保存'}
         cancelText="取消"
         width={500}
         wrapProps={{ 'data-test': 'TextboxDialog' }}

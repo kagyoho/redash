@@ -19,7 +19,7 @@ def get_object_counts():
     if settings.FEATURE_SHOW_QUERY_RESULTS_COUNT:
         status['指标结果集数'] = QueryResult.query.count()
         status['未使用指标结果集数'] = QueryResult.unused().count()
-    status['模型数'] = Dashboard.query.count()
+    status['看板数'] = Dashboard.query.count()
     status['小部件数'] = Widget.query.count()
     return status
 

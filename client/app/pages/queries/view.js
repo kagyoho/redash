@@ -403,7 +403,7 @@ function QueryViewCtrl(
           $scope.query.visualizations = $scope.query.visualizations.filter(v => vis.id !== v.id);
         },
         () => {
-          notification.error('删除图表文件时出错，也许它已在模型中使用？');
+          notification.error('删除图表文件时出错，也许它已在看板中使用？');
         },
       );
     });

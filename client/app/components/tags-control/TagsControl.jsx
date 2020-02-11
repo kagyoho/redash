@@ -85,11 +85,11 @@ function modelTagsControl({ archivedTooltip }) {
 }
 
 export const QueryTagsControl = modelTagsControl({
-  archivedTooltip: '该指标已回收，可以在模型中使用，也可以显示在搜索结果中。',
+  archivedTooltip: '该指标已回收，可以在看板中使用，也可以显示在搜索结果中。',
 });
 
 export const DashboardTagsControl = modelTagsControl({
-  archivedTooltip: '该模型已回收，并不会在模型中也不搜索结果中列出。',
+  archivedTooltip: '该看板已回收，并不会在看板中也不搜索结果中列出。',
 });
 
 export default function init(ngModule) {

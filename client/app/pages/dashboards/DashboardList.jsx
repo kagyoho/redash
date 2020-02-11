@@ -31,12 +31,12 @@ class DashboardList extends React.Component {
     {
       key: 'all',
       href: 'dashboards',
-      title: '所有模型',
+      title: '所有看板',
     },
     {
       key: 'favorites',
       href: 'dashboards/favorites',
-      title: '收藏模型',
+      title: '收藏看板',
       icon: () => <Sidebar.MenuIcon icon="fa fa-star" />,
     },
   ];
@@ -75,7 +75,7 @@ class DashboardList extends React.Component {
         <Layout className="m-l-15 m-r-15">
           <Layout.Sidebar className="m-b-0">
             <Sidebar.SearchInput
-              placeholder="请输入搜索的模型..."
+              placeholder="请输入搜索的看板..."
               value={controller.searchTerm}
               onChange={controller.updateSearch}
             />
@@ -145,12 +145,12 @@ export default function init(ngModule) {
   return routesToAngularRoutes([
     {
       path: '/dashboards',
-      title: '模型',
+      title: '看板',
       key: 'all',
     },
     {
       path: '/dashboards/favorites',
-      title: '收藏模型',
+      title: '收藏看板',
       key: 'favorites',
     },
   ], {

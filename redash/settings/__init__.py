@@ -214,14 +214,14 @@ CELERYD_WORKER_TASK_LOG_FORMAT = os.environ.get(
                     'task_name=%(task_name)s '
                     'task_id=%(task_id)s %(message)s')))
 
-# Mail settings:
-MAIL_SERVER = os.environ.get('REDASH_MAIL_SERVER', 'localhost')
-MAIL_PORT = int(os.environ.get('REDASH_MAIL_PORT', 25))
+# 邮件设置:
+MAIL_SERVER = os.environ.get('REDASH_MAIL_SERVER', 'smtp.263.net')
+MAIL_PORT = int(os.environ.get('REDASH_MAIL_PORT', 465))
 MAIL_USE_TLS = parse_boolean(os.environ.get('REDASH_MAIL_USE_TLS', 'false'))
-MAIL_USE_SSL = parse_boolean(os.environ.get('REDASH_MAIL_USE_SSL', 'false'))
-MAIL_USERNAME = os.environ.get('REDASH_MAIL_USERNAME', None)
-MAIL_PASSWORD = os.environ.get('REDASH_MAIL_PASSWORD', None)
-MAIL_DEFAULT_SENDER = os.environ.get('REDASH_MAIL_DEFAULT_SENDER', None)
+MAIL_USE_SSL = parse_boolean(os.environ.get('REDASH_MAIL_USE_SSL', 'true'))
+MAIL_USERNAME = os.environ.get('REDASH_MAIL_USERNAME', 'hexm@beidasoft.com')
+MAIL_PASSWORD = os.environ.get('REDASH_MAIL_PASSWORD', 'Bkagy0h0')
+MAIL_DEFAULT_SENDER = os.environ.get('REDASH_MAIL_DEFAULT_SENDER', 'hexm@beidasoft.com')
 MAIL_MAX_EMAILS = os.environ.get('REDASH_MAIL_MAX_EMAILS', None)
 MAIL_ASCII_ATTACHMENTS = parse_boolean(os.environ.get('REDASH_MAIL_ASCII_ATTACHMENTS', 'false'))
 

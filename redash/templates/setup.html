@@ -25,7 +25,7 @@
 <div class="fixed-width-page">
   <div class="bg-white tiled">
     <h4 class="m-t-0">数博数据分析平台</h4>
-    <div>Before you can use your instance, you need to do a quick setup.</div>
+    <div>在使用实例之前，需要进行快速设置。</div>
 
     {% with messages = get_flashed_messages() %}
       {% if messages %}
@@ -36,7 +36,7 @@
     {% endwith %}
 
     <form role="form" method="post" name="create_account">
-      <h4 class="m-t-25">Admin User</h4>
+      <h4 class="m-t-25">管理员</h4>
       {{ render_field(form.name) }}
       {{ render_field(form.email) }}
       {{ render_field(form.password) }}
@@ -44,20 +44,20 @@
       <div class="checkbox">
         <label>
           {{ form.security_notifications() }}
-          Subscribe to Security Notifications
+          订阅安全通知
         </label>
       </div>
 
       <div class="checkbox">
         <label>
           {{ form.newsletter() }}
-          Subscribe to newsletter (version updates, no more than once a month)
+          订阅新闻通讯（版本更新，每月不超过一次）
         </label>
       </div>
 
-      <h4 class="m-t-25">General</h4>
+      <h4 class="m-t-25">常用</h4>
 
-      {{ render_field(form.org_name, help_block="Used in email notifications and the UI.") }}
+      {{ render_field(form.org_name, help_block="用于电子邮件通知和用户界面。") }}
 
       <button type="submit" class="btn btn-primary btn-block m-t-25">配置</button>
     </form>

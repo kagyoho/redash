@@ -24,7 +24,7 @@
           ng-show="$ctrl.showDashboardsMenu"
           uib-dropdown
         >
-          <a class="btn" href="dashboards">模型</a>
+          <a class="btn" href="dashboards">看板</a>
           <a type="button" class="btn hidden-xs" uib-dropdown-toggle>
             <span class="caret caret--nav"></span>
           </a>
@@ -105,7 +105,7 @@
           </li>
           <li role="menuitem">
             <a ng-show="$ctrl.currentUser.hasPermission('create_dashboard')"
-              ng-click="$ctrl.newDashboard()">模型</a>
+              ng-click="$ctrl.newDashboard()">看板</a>
           </li>
           <li role="menuitem"><a href="alerts/new">监控</a></li>
         </ul>

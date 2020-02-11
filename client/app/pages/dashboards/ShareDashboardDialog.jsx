@@ -61,7 +61,7 @@ class ShareDashboardDialog extends React.Component {
         dashboard.public_url = data.public_url;
       })
       .error(() => {
-        notification.error('无法开启共享此模型。');
+        notification.error('无法开启共享此看板。');
       })
       .finally(() => {
         this.setState({ saving: false });
@@ -79,7 +79,7 @@ class ShareDashboardDialog extends React.Component {
         delete dashboard.public_url;
       })
       .error(() => {
-        notification.error('无法关闭此模型的共享。');
+        notification.error('无法关闭此看板的共享。');
       })
       .finally(() => {
         this.setState({ saving: false });
@@ -107,7 +107,7 @@ class ShareDashboardDialog extends React.Component {
           {!this.props.hasOnlySafeQueries && (
             <Form.Item>
               <Alert
-                message="为了安全起见，当前不支持包含带有文本参数查询的模型共享；考虑将指标中的文本参数更改为其他类型。"
+                message="为了安全起见，当前不支持包含带有文本参数查询的看板共享；考虑将指标中的文本参数更改为其他类型。"
                 type="error"
               />
             </Form.Item>

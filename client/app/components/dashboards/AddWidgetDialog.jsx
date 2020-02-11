@@ -140,7 +140,7 @@ class AddWidgetDialog extends React.Component {
           loading: this.state.saveInProgress,
           disabled: !this.state.selectedQuery,
         }}
-        okText="添加到模型"
+        okText="添加到看板"
         cancelText="取消"
         width={700}
       >

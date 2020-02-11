@@ -13,10 +13,10 @@ from wtforms.fields.html5 import EmailField
 
 
 class SetupForm(Form):
-    name = StringField('Name', validators=[validators.InputRequired()])
-    email = EmailField('Email Address', validators=[validators.Email()])
-    password = PasswordField('Password', validators=[validators.Length(6)])
-    org_name = StringField("Organization Name", validators=[validators.InputRequired()])
+    name = StringField('账号', validators=[validators.InputRequired()])
+    email = EmailField('邮箱', validators=[validators.Email()])
+    password = PasswordField('密码', validators=[validators.Length(6)])
+    org_name = StringField("机构名称", validators=[validators.InputRequired()])
     security_notifications = BooleanField()
     newsletter = BooleanField()
 

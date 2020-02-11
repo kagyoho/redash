@@ -184,7 +184,7 @@ function EditParameterSettingsDialog(props) {
           </Form.Item>
         )}
         {param.type === 'query' && (
-          <Form.Item label="指标" help="选择模型以从中加载下拉值" {...formItemProps}>
+          <Form.Item label="指标" help="选择看板以从中加载下拉值" {...formItemProps}>
             <QuerySelector
               selectedQuery={initialQuery}
               onChange={q => setParam({ ...param, queryId: q && q.id })}
